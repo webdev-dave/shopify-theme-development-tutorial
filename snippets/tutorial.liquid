@@ -1,0 +1,6 @@
+{% for product in collection.products %}
+  <p style="background-color: {% if forloop.first %} green {% elsif forloop.last %} orange {% endif %}">{{ forloop.index }} - {{ product.title }}</p>
+  {% for tag in product.tags %}
+    <small>{{ tag }}</small>
+  {% endfor %}
+{% endfor %}
