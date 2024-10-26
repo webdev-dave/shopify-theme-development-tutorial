@@ -1,7 +1,9 @@
 <h1>{{ metaobject.name }}</h1>
-{{ metaobject.profile_image | image_url: width: 250 | image_tag }}
 
 <p>{{ section.settings.section_message }}</p>
+
+{{ metaobject.profile_image | image_url: width: 250 | image_tag }}
+{{ metaobject.bio | metafield_tag }}
 
 <h3>Products by {{ metaobject.name }}:</h3>
 <ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
