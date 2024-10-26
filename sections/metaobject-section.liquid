@@ -1,0 +1,35 @@
+<h1>{{ metaobject.name }}</h1>
+{{ metaobject.profile_image | image_url: width: 250 | image_tag }}
+
+<p>{{ section.settings.section_message }}</p>
+
+<h3>Products by {{ metaobject.name }}:</h3>
+<ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+  {% for product in collections.all.products %}
+    {% if product.metafields.custom.craftsperson.value.system.handle == metaobject.system.handle %}
+      <li>
+        <p>{{ product.title }}</p>
+        {{ product.featured_image | image_url: width: 250 | image_tag }}
+      </li>
+    {% endif %}
+  {% endfor %}
+
+</ul>
+
+{% schema %}
+  {
+    "name": "Metaobject Section",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Section Message",
+        "id": "section_message"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Metaobject Section"
+      }
+    ]
+  }
+{% endschema %}

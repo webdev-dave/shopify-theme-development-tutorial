@@ -12,6 +12,7 @@
     "dynamic-metafield": {
       "type": "dynamic-metafield",
       "settings": {
+        "metafield_key": "date_metafield"
       }
     },
     "main": {
