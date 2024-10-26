@@ -3,6 +3,40 @@
   <h2>Example Metafield</h2>
   <p>{{ example_metafield  }}</p>
 {% endif %}
+
+{%  assign related_product =  product.metafields.custom.related_product %}
+{% if related_product %}
+  <h2>Related Product</h2>
+  <p>{{ product.metafields.custom.related_product }}</p>
+{% endif %}
+
+{% assign product_guide = product.metafields.custom.product_guide %}
+{% if product_guide %}
+  <h2>File Metafield</h2>
+  <a target="_blank" href={{ product_guide.value.url }}>Download Product Guide</a>
+{% endif %}
+
+{% assign image_metafield = product.metafields.custom.image_metafield %}
+{% if image_metafield %}
+  <h2>Image File Metafield</h2>
+  {{image_metafield | image_url: width: '500' |  image_tag}}
+{% endif %}
+
+{% assign date_metafield = product.metafields.custom.date_metafield %}
+{% if date_metafield %}
+  <h2>Date Metafield</h2>
+  {{ date_metafield.value |  date: "%B %d, %Y" }}
+{% endif %}
+
+{% assign richtext_metafield = product.metafields.custom.richtext_metafield %}
+{% if richtext_metafield %}
+  <h2>Richtext Metafield</h2>
+  {{ richtext_metafield | metafield_tag}}
+{% endif %}
+
+
+
+
 <product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
