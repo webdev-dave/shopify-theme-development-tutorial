@@ -1465,5 +1465,15 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Tutorial",
+    "settings": [
+      {
+        "type": "text",
+        "label": "promotion",
+        "id": "promotion_name",
+      }
+    ]
   }
 ]
