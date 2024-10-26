@@ -9,6 +9,11 @@
  */
 {
   "sections": {
+    "dynamic-metafield": {
+      "type": "dynamic-metafield",
+      "settings": {
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -106,6 +111,7 @@
     }
   },
   "order": [
+    "dynamic-metafield",
     "main",
     "related-products"
   ]

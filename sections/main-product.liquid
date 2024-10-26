@@ -1,3 +1,6 @@
+{% comment %} Experimenting with metafield tutorial... {% endcomment %}
+
+
 {% assign example_metafield = product.metafields.custom.example_metafield %}
 {% if example_metafield %} 
   <h2>Example Metafield</h2>
@@ -6,8 +9,8 @@
 
 {%  assign related_product =  product.metafields.custom.related_product %}
 {% if related_product %}
-  <h2>Related Product</h2>
-  <p>{{ product.metafields.custom.related_product }}</p>
+  <h2>Related Product Title</h2>
+  <p>{{ product.metafields.custom.related_product.value.title }}</p>
 {% endif %}
 
 {% assign product_guide = product.metafields.custom.product_guide %}
@@ -34,6 +37,23 @@
   {{ richtext_metafield | metafield_tag}}
 {% endif %}
 
+{% assign json_metafield = product.metafields.custom.json_metafield %}
+{% if json_metafield %}
+  <h2>JSON Metafield</h2>
+  <p style="opacity: {{ json_metafield.value.message_opacity }}">{{json_metafield.value.message}}</p>
+{% endif %}
+
+{% assign list_metafield = product.metafields.custom.list_metafield  %}
+{% if list_metafield %}
+  <h2>List Metafield</h2>
+  <ul>
+    
+    {% for list_item in list_metafield.value %}
+      <li>{{ list_item }}</li>
+    {% endfor %}
+  
+  </ul>
+{% endif %}
 
 
 
