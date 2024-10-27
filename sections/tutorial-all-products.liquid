@@ -1,0 +1,52 @@
+<style>
+  all-products .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--products-per-row), 1fr);
+    gap: 16px;
+  }
+</style>
+
+{% assign products_per_row = section.settings.products_per_row %}
+{% assign all_products = collections.all.products %}
+{% assign remaining_products = '' %}
+
+
+{% for product in all_products offset: products_per_row %}
+  {% comment %} This creates a comma-separated string of product handles, excluding the first few products that we already loaded (based on a setting input by user called products_per_row {% endcomment %}
+  {% assign remaining_products = remaining_products | append: product.handle %}
+  {% unless forloop.last %}
+    {% assign remaining_products = remaining_products | append: "," %}
+  {% endunless %}
+{% endfor %}
+
+<div class="page-width">
+  <all-products data-remaining-products="{{ remaining_products }}">
+    <div class="grid" style="--products-per-row: {{ products_per_row }}">
+      {% for product in all_products limit: products_per_row %}
+        {% render 'card-product'
+          , card_product: product %}
+      {% endfor %}
+    </div>
+    <button class="button">
+      Load More</button>
+  </all-products>
+{% comment %} <p>{{ products_per_row }}</p> {% endcomment %}
+</div>
+
+{% schema %}
+  {
+    "name": "All Products",
+    "settings": [
+      {
+        "type": "number",
+        "id": "products_per_row",
+        "label": "Products Per Row"
+      }
+    ],
+    "presets": [
+      {
+        "name": "All Products"
+      }
+    ]
+  }
+{% endschema %}

@@ -11,7 +11,16 @@
   "sections": {
     "main-account": {
       "type": "main-account",
-      "settings": {}
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "tutorial_all_products_ikGjQy": {
+      "type": "tutorial-all-products",
+      "settings": {
+        "products_per_row": 5
+      }
     },
     "image_banner": {
       "type": "image-banner",
@@ -92,6 +101,7 @@
   },
   "order": [
     "main-account",
+    "tutorial_all_products_ikGjQy",
     "image_banner",
     "featured_collection",
     "custom_liquid_DDFmHF"
