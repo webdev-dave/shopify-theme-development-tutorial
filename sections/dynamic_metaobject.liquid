@@ -1,0 +1,29 @@
+{% assign metaobject_handle = section.settings.metaobject_handle %}
+{% assign selected_metaobject = shop.metaobjects.craftsperson[metaobject_handle] %}
+
+{% if selected_metaobject.name %}
+  <h2>Dynamic Metaobject</h2>
+  <p>{{ selected_metaobject.name }}</p>
+
+  <div>{{ selected_metaobject.bio | metafield_tag }}</div>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Dynamic Metaobject",
+    "class": "page-width",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Metaobject Handle",
+        "id": "metaobject_handle"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Dynamic Metaobject"
+      }
+    ]
+  }
+{% endschema %}

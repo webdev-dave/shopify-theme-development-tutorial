@@ -1,4 +1,12 @@
 {% comment %} Experimenting with metafield tutorial... {% endcomment %}
+{% assign craftspeople = product.metafields.custom.craftspeople.value %}
+{% if craftspeople %}
+  <h2>Example of Metafield list of multiple Metaobject refrences</h2>
+  {% for craftsperson in craftspeople %}
+    <p>{{craftsperson.name}}</p>
+  {% endfor %}
+{% endif %}
+  
 
 
 {% assign example_metafield = product.metafields.custom.example_metafield %}
@@ -781,7 +789,7 @@
       {{ product | structured_data }}
     </script>
   </div>
-  {%  render 'product-craftsperson', { product: product } %} %}
+  {%  render 'product-craftsperson', { product: product } %}
 </product-info>
 
 

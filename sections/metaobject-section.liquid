@@ -10,8 +10,10 @@
   {% for product in collections.all.products %}
     {% if product.metafields.custom.craftsperson.value.system.handle == metaobject.system.handle %}
       <li>
-        <p>{{ product.title }}</p>
-        {{ product.featured_image | image_url: width: 250 | image_tag }}
+        <a href="{{ product.url }}">
+          <p>{{ product.title }}</p>
+          {{ product.featured_image | image_url: width: 250 | image_tag }}
+        </a>
       </li>
     {% endif %}
   {% endfor %}

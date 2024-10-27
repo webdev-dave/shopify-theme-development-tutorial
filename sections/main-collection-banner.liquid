@@ -1,4 +1,8 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+
+{% comment %} How to axxes a metaobject globally... tutorial example {% endcomment %}
+ <p>{{ shop.metaobjects.craftsperson['john-prine'].name }}</p>
+
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
