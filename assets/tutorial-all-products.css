@@ -1,0 +1,13 @@
+all-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+all-products .grid {
+  display: grid;
+  grid-template-columns: repeat(var(--products-per-row), 1fr);
+  gap: 16px;
+  width: 100%;
+}

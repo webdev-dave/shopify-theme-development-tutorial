@@ -1,10 +1,4 @@
-<style>
-  all-products .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--products-per-row), 1fr);
-    gap: 16px;
-  }
-</style>
+{{ "tutorial-all-products.css" |  asset_url | stylesheet_tag }}
 
 {% assign products_per_row = section.settings.products_per_row %}
 {% assign all_products = collections.all.products %}
@@ -20,7 +14,8 @@
 {% endfor %}
 
 <div class="page-width">
-  <all-products data-remaining-products="{{ remaining_products }}">
+  <all-products data-remaining-products="{{ remaining_products }}" data-products-per-row="
+    {{ products_per_row }}">
     <div class="grid" style="--products-per-row: {{ products_per_row }}">
       {% for product in all_products limit: products_per_row %}
         {% render 'card-product'
@@ -32,6 +27,9 @@
   </all-products>
 {% comment %} <p>{{ products_per_row }}</p> {% endcomment %}
 </div>
+
+<script src="{{  "tutorial-all-products.js" | asset_url }}" async></script>
+
 
 {% schema %}
   {
